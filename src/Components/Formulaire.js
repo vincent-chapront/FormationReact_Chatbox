@@ -16,15 +16,16 @@ class Formulaire extends Component {
   submit=event=>{
       event.preventDefault()
       this.props.handler(this.state.message)
+      this.setState({message:""})
   }
 
   render() {
-    const {pseudo}=this.state
+    const {pseudo,message}=this.state
     return (
       <Fragment>
         <form onSubmit={this.submit}>
           <p>{pseudo}</p>
-          <textarea onChange={this.change} name='message'></textarea>
+          <textarea onChange={this.change} name='message' value={message}></textarea>
           <button type="submit">Envoyer</button>
         </form>
       </Fragment>

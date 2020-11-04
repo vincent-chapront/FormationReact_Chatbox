@@ -44,7 +44,7 @@ class App extends Component {
             <p>APP</p>
             <p>Bonjour : {name}</p>
             <Formulaire handler={this.handlerAddMessage}/>
-            <Message messages={messages}/>
+            <Message pseudo={name} messages={messages}/>
         </div>
         )
     }
