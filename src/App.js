@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import Message from './Components/Message'
 import Formulaire from './Components/Formulaire'
+import CouleurContext from './Components/Couleur'
  
 class App extends Component {
     
@@ -40,12 +41,14 @@ class App extends Component {
     render () {
         const {name,messages} = this.state
         return (
-        <div>
-            <p>APP</p>
-            <p>Bonjour : {name}</p>
-            <Formulaire handler={this.handlerAddMessage}/>
-            <Message pseudo={name} messages={messages}/>
-        </div>
+            <CouleurContext>
+                <div>
+                    <p>APP</p>
+                    <p>Bonjour : {name}</p>
+                    <Formulaire handler={this.handlerAddMessage}/>
+                    <Message pseudo={name} messages={messages}/>
+                </div>
+            </CouleurContext>
         )
     }
 }
