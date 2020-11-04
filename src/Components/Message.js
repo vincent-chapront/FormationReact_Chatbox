@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from 'prop-types';
+import './Message.css';
 
 class Message extends Component {
   render() {
@@ -11,7 +12,7 @@ class Message extends Component {
       .reverse()
       .map(m=>
             <Fragment key={cnt++}>
-              <li style={{color:(m.pseudo===pseudo?'green':'red')}}>
+              <li className={m.pseudo===pseudo?"current":"other"}>
                 {m.pseudo} ({m.time}) : {m.message}
               </li>
             </Fragment>
