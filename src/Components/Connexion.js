@@ -1,11 +1,16 @@
 import React, { Component, Fragment } from "react";
 import { Redirect } from "react-router-dom";
+import withPlaceHolder from "../hoc/withPlaceHolder"
 class Connexion extends Component {
 
     state={name:"", redirect:null,canConnect:false, error:""}
     change=event=>{
         const { name , value }= event.target
         this.setState({ [name]:value})
+    }
+
+    componentDidMount(){
+        this.props.connexion();
     }
 
     submit=event=>{
@@ -40,7 +45,7 @@ class Connexion extends Component {
                         <tbody>
                             <tr>
                                 <td>Nom</td>
-                                <td><input name="name" type="text" onChange={this.change} value={name}/></td>
+                                <td><input placeholder={this.props.placeHolder} name="name" type="text" onChange={this.change} value={name}/></td>
                             </tr>
                             {errorMessage}
                             <tr>
@@ -54,4 +59,6 @@ class Connexion extends Component {
     }
 }
 
-export default Connexion;
+const wrappedComponent= withPlaceHolder(Connexion)
+
+export default wrappedComponent;
