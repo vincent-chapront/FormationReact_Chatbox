@@ -22,7 +22,7 @@ class Connexion extends Component {
         const { canConnect,redirect } = this.state
 
         if (canConnect) {
-          return <Redirect to={redirect} />
+          return <Redirect to={redirect} push/>
         }
 
         const { name, error } = this.state
