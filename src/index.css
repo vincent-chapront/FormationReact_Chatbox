@@ -12,3 +12,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.composant{
+  border: 2px solid black;
+  margin:5px;
+}
+
+.composantTitle{
+  font-size: 8px;
+}

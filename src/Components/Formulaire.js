@@ -25,8 +25,9 @@ class Formulaire extends Component {
     return (
       <CouleurContext.Consumer>
         { context=> 
-            <form 
+            <form className="composant"
                 onSubmit={this.submit} >
+              <p className="composantTitle">Composant : Formulaire.js</p>
               <p>{pseudo}</p>
               <textarea onChange={this.change} name='message' value={message}></textarea>
               <button type="submit"

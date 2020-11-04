@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import Message from './Components/Message'
 import Formulaire from './Components/Formulaire'
-import CouleurContext from './Components/Couleur'
+import CouleurProvider, {CouleurContext} from './Components/Couleur'
 import SetCouleur from './Components/SetCouleur'
  
 class App extends Component {
@@ -42,15 +42,20 @@ class App extends Component {
     render () {
         const {name,messages} = this.state
         return (
-            <CouleurContext>
-                <div>
-                    <p>APP</p>
-                    <SetCouleur/>
-                    <p>Bonjour : {name}</p>
-                    <Formulaire handler={this.handlerAddMessage}/>
-                    <Message pseudo={name} messages={messages}/>
-                </div>
-            </CouleurContext>
+            <CouleurProvider>
+                <CouleurContext.Consumer>
+                    { context=> (
+                        <div className="composant">
+                            <p className="composantTitle">Composant : App.js</p>
+                            <SetCouleur/>
+                            <h1 style={{color:context.state.couleur}}>Bonjour : {name}</h1>
+                            <Formulaire handler={this.handlerAddMessage}/>
+                            <Message pseudo={name} messages={messages}/>
+                        </div>
+                        )
+                    }
+                </CouleurContext.Consumer>
+            </CouleurProvider>
         )
     }
 }
