@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import withPlaceHolder from "../hoc/withPlaceHolder"
+import withDbConnection from "../hoc/withDbConnection"
 class Connexion extends Component {
 
     state={name:"", redirect:null,canConnect:false, error:""}
@@ -59,6 +60,6 @@ class Connexion extends Component {
     }
 }
 
-const wrappedComponent= withPlaceHolder(Connexion)
+const wrappedComponent= withDbConnection(withPlaceHolder(Connexion))
 
 export default wrappedComponent;
