@@ -22,7 +22,7 @@ class App extends Component {
         const hour=date.getHours().toString()
         const min=date.getMinutes().toString()
         const sec=date.getSeconds().toString()
-        return (hour.length==1?"0":"")+hour+":"+(min.length==1?"0":"")+min+":"+(sec.length==1?"0":"")+sec
+        return (hour.length===1?"0":"")+hour+":"+(min.length===1?"0":"")+min+":"+(sec.length===1?"0":"")+sec
     }
 
     componentDidUpdate(){

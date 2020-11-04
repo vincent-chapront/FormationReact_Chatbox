@@ -10,7 +10,7 @@ class Connexion extends Component {
 
     submit=event=>{
         event.preventDefault()
-        if(this.state.name==""){
+        if(this.state.name===""){
             this.setState({canConnect:false,error:"Le nom ne peut pas être vide",redirect:null})
         }
         else{
