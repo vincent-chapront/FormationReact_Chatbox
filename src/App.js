@@ -8,6 +8,11 @@ class App extends Component {
     state={name:"", messages:[]}
 
     componentDidMount(){
+        const ls=JSON.parse(localStorage.getItem('state'))
+        if(ls!==null && ls!==undefined)
+        {
+          this.setState(ls)
+        }
         const name=this.props.match.params.pseudo
         this.setState({name:name})
     }
@@ -18,6 +23,10 @@ class App extends Component {
         const min=date.getMinutes().toString()
         const sec=date.getSeconds().toString()
         return (hour.length==1?"0":"")+hour+":"+(min.length==1?"0":"")+min+":"+(sec.length==1?"0":"")+sec
+    }
+
+    componentDidUpdate(){
+      localStorage.setItem('state', JSON.stringify(this.state))
     }
 
     handlerAddMessage=(message)=>{
