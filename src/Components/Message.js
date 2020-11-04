@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from 'prop-types';
 
 class Message extends Component {
   render() {
@@ -10,7 +11,7 @@ class Message extends Component {
       .reverse()
       .map(m=>
             <Fragment key={cnt++}>
-              <li style={{color:(m.pseudo==pseudo?'green':'red')}}>
+              <li style={{color:(m.pseudo===pseudo?'green':'red')}}>
                 {m.pseudo} ({m.time}) : {m.message}
               </li>
             </Fragment>
@@ -26,5 +27,11 @@ class Message extends Component {
     );
   }
 }
+
+Message.propTypes={
+  pseudo:PropTypes.string,
+  messages:PropTypes.array  
+}
+
 
 export default Message;
