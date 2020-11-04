@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
-
+import { Redirect } from "react-router-dom";
 class Connexion extends Component {
 
-    state={name:""}
+    state={name:"", redirect:null}
     change=event=>{
         const { name , value }= event.target
         this.setState({ [name]:value})
@@ -11,26 +11,31 @@ class Connexion extends Component {
     submit=event=>{
         event.preventDefault()
         console.log("Submit : Nom : " + this.state.name)
+        this.setState({redirect:"/app"})
     }
 
     render() {
-        return (
-        <Fragment>
-            <p>Page de connexion</p>
-            <form onSubmit={this.submit}>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Nom</td>
-                            <td><input name="name" type="text" onChange={this.change}/></td>
-                        </tr>
-                        <tr>
-                            <td colSpan="2"><button type="submit">Connexion</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-        </Fragment>
+        if (this.state.redirect) {
+          return <Redirect to={this.state.redirect} />
+        }
+
+        return(
+            <Fragment>
+                <p>Page de connexion</p>
+                <form onSubmit={this.submit}>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Nom</td>
+                                <td><input name="name" type="text" onChange={this.change}/></td>
+                            </tr>
+                            <tr>
+                                <td colSpan="2"><button type="submit">Connexion</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </Fragment>
         );
     }
 }
