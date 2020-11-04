@@ -6,7 +6,7 @@ class App extends Component {
     state={name:""}
 
     componentDidMount(){
-        const name=this.props.match.params.name
+        const name=this.props.match.params.pseudo
         this.setState({name:name})
     }
 
