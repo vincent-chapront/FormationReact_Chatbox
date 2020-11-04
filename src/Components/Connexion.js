@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Redirect } from "react-router-dom";
 class Connexion extends Component {
 
-    state={name:"", redirect:null}
+    state={name:"", redirect:null,canConnect:false, error:""}
     change=event=>{
         const { name , value }= event.target
         this.setState({ [name]:value})
@@ -10,14 +10,28 @@ class Connexion extends Component {
 
     submit=event=>{
         event.preventDefault()
-        this.setState({redirect:"/app/"+this.state.name})
+        if(this.state.name==""){
+            this.setState({canConnect:false,error:"Le nom ne peut pas être vide",redirect:null})
+        }
+        else{
+            this.setState({canConnect:true,redirect:"/app/"+this.state.name})
+        }
     }
 
     render() {
-        if (this.state.redirect) {
-          return <Redirect to={this.state.redirect} />
+        const { canConnect,redirect } = this.state
+
+        if (canConnect) {
+          return <Redirect to={redirect} />
         }
 
+        const { name, error } = this.state
+
+        const errorMessage=
+            error
+            ? <tr><td colSpan="2"> <p style={{color: 'red'}}>{error}</p></td></tr>
+            : <Fragment/>
+        
         return(
             <Fragment>
                 <p>Page de connexion</p>
@@ -26,8 +40,9 @@ class Connexion extends Component {
                         <tbody>
                             <tr>
                                 <td>Nom</td>
-                                <td><input name="name" type="text" onChange={this.change}/></td>
+                                <td><input name="name" type="text" onChange={this.change} value={name}/></td>
                             </tr>
+                            {errorMessage}
                             <tr>
                                 <td colSpan="2"><button type="submit">Connexion</button></td>
                             </tr>
