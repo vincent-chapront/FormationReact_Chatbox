@@ -11,7 +11,7 @@ const Root=()=>(
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Connexion}/>
-            <Route path="/app" component={App}/>
+            <Route path="/app/:name" component={App}/>
             <Route component={Page404}/>
         </Switch>
     </BrowserRouter>

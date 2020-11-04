@@ -10,8 +10,7 @@ class Connexion extends Component {
 
     submit=event=>{
         event.preventDefault()
-        console.log("Submit : Nom : " + this.state.name)
-        this.setState({redirect:"/app"})
+        this.setState({redirect:"/app/"+this.state.name})
     }
 
     render() {
