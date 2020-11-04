@@ -3,6 +3,7 @@ import './App.css'
 import Message from './Components/Message'
 import Formulaire from './Components/Formulaire'
 import CouleurContext from './Components/Couleur'
+import SetCouleur from './Components/SetCouleur'
  
 class App extends Component {
     
@@ -44,6 +45,7 @@ class App extends Component {
             <CouleurContext>
                 <div>
                     <p>APP</p>
+                    <SetCouleur/>
                     <p>Bonjour : {name}</p>
                     <Formulaire handler={this.handlerAddMessage}/>
                     <Message pseudo={name} messages={messages}/>

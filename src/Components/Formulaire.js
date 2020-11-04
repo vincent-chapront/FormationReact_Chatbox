@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { CouleurContext } from "./Couleur";
 
 class Formulaire extends Component {
@@ -26,11 +26,11 @@ class Formulaire extends Component {
       <CouleurContext.Consumer>
         { context=> 
             <form 
-                onSubmit={this.submit} 
-                style={{backgroundColor:context.state.couleur}}>
+                onSubmit={this.submit} >
               <p>{pseudo}</p>
               <textarea onChange={this.change} name='message' value={message}></textarea>
-              <button type="submit">Envoyer</button>
+              <button type="submit"
+                style={{backgroundColor:context.state.couleur}}>Envoyer</button>
             </form>
         }
       </CouleurContext.Consumer>
