@@ -12,14 +12,18 @@ class App extends Component {
         this.setState({name:name})
     }
 
-    handlerAddMessage=(message)=>{
-        const messages=this.state.messages
-        const messageClone=messages.slice()
+    getFormattedTime=()=>{
         const date=new Date()
         const hour=date.getHours().toString()
         const min=date.getMinutes().toString()
         const sec=date.getSeconds().toString()
-        const time=(hour.length==1?"0":"")+hour+":"+(min.length==1?"0":"")+min+":"+(sec.length==1?"0":"")+sec
+        return (hour.length==1?"0":"")+hour+":"+(min.length==1?"0":"")+min+":"+(sec.length==1?"0":"")+sec
+    }
+
+    handlerAddMessage=(message)=>{
+        const messages=this.state.messages
+        const messageClone=messages.slice()
+        const time = this.getFormattedTime()
         messageClone.push({pseudo:this.state.name, message:message, time:time})
         this.setState({messages:messageClone})
     }

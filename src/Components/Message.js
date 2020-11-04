@@ -11,9 +11,6 @@ class Message extends Component {
         <Fragment key={cnt++}><li>{m.pseudo} ({m.time}) : {m.message}</li></Fragment>
           )
 
-    console.log("messagesDisplay.length : "+messagesDisplay.length)
-    console.log("this.props.messages : "+this.props.messages.length)
-
     return (
       <Fragment>
         <h1>Messages</h1>
