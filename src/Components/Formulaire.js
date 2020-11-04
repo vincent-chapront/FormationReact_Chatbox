@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { CouleurContext } from "./Couleur";
 
 class Formulaire extends Component {
   state={pseudo:"", message:""}
@@ -22,13 +23,17 @@ class Formulaire extends Component {
   render() {
     const {pseudo,message}=this.state
     return (
-      <Fragment>
-        <form onSubmit={this.submit}>
-          <p>{pseudo}</p>
-          <textarea onChange={this.change} name='message' value={message}></textarea>
-          <button type="submit">Envoyer</button>
-        </form>
-      </Fragment>
+      <CouleurContext.Consumer>
+        { context=> 
+            <form 
+                onSubmit={this.submit} 
+                style={{backgroundColor:context.state.couleur}}>
+              <p>{pseudo}</p>
+              <textarea onChange={this.change} name='message' value={message}></textarea>
+              <button type="submit">Envoyer</button>
+            </form>
+        }
+      </CouleurContext.Consumer>
     );
   }
 }
